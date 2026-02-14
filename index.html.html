@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>index.html</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#e6f2ff;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    height:auto;
+    margin:0;
+    text-align:center;
+    overflow-y:auto;
+}
+
+
+#contenedor{
+    width:90%;
+}
+
+button{
+    padding:15px 25px;
+    font-size:20px;
+    margin:20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#si{
+    background-color: #008f39;
+    color:white;
+}
+
+#no{
+    background-color:red;
+    color:white;
+}
+
+#menu{
+    display:none;
+    margin-top:40px;
+}
+
+.opcion{
+    width:150px;
+    margin:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.opcion:hover{
+    transform:scale(1.1);
+}
+
+.seccion{
+    display:none;
+    padding:20px;
+}
+
+/* gif inicio tamaño */
+.gifinicio{
+    width:200px;
+    margin-bottom:15px;
+}
+
+/* grid 2x2 */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    justify-items:center;
+}
+
+/* cartas */
+.cartas{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    margin-top:20px;
+}
+
+.carta{
+    width:220px;
+    min-height:140px;
+    padding:15px;
+    border-radius:15px;
+    font-size:16px;
+    outline:none;
+    cursor:text;
+    animation:flotar 3s ease-in-out infinite;
+    transition:0.3s;
+}
+
+.carta:hover{
+    transform:scale(1.05);
+}
+
+/* colores pastel */
+.c1{ background:#ffd6e7; }
+.c2{ background:#d6f5ff; }
+.c3{ background:#e6ffd6; }
+.c4{ background:#fff0c2; }
+.c5{ background:#ffd6e7; }
+.c6{ background:#d6f0ff; }
+.c7{ background:#e6ffd6; }
+.c8{ background:#fff0d6; }
+.c9{ background:#e8d6ff; }
+.c10{ background:#d6fff8; }
+.c11{ background:#ffe6cc; }
+.c12{ background:#f2ffd6; }
+.c13{ background:#ffd6f5; }
+.c14{ background:#d6e4ff; }
+.c15{ background:#fff6d6; }
+
+.carta-grande{
+    background:#e6f2ff; /* azul pastel */
+    padding:30px;
+    border-radius:25px;
+    width:90%;
+    max-width:800px;
+    margin:30px auto;
+    box-shadow:0px 10px 25px rgba(0,0,0,0.1);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    animation:flotar 4s ease-in-out infinite,
+              aparecer 1.2s ease;
+}
+
+
+.carta-grande textarea{
+    width:100%;
+    max-width:700px;
+    height:300px;
+    border-radius:20px;
+    border:none;
+    padding:25px;
+    font-size:17px;
+    resize:none;
+    background:#d6ecff; /* azul pastel más suave */
+    box-sizing:border-box;
+    line-height:1.7;
+
+    animation:latidoSuave 2s infinite alternate;
+}
+
+.botonCarta{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:15px;
+    background:#ff9ecf;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.botonCarta:hover{
+    transform:scale(1.1);
+    background:#ff6fa5;
+}
+
+@keyframes flotar{
+    0%{ transform:translateY(0px);}
+    50%{ transform:translateY(-6px);}
+    100%{ transform:translateY(0px);}
+}
+
+@keyframes latido{
+    from{transform:scale(1);}
+    to{transform:scale(1.08);}
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:scale(0.9);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes latidoSuave{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.02);
+    }
+}
+/* ====== NUEVAS TARJETAS RECTANGULO ====== */
+.rectangulo{
+    width:90%;
+    max-width:900px;
+    margin:20px auto;
+    padding:20px;
+    border-radius:20px;
+    background:#e6f2ff;
+    box-shadow:0px 8px 20px rgba(0,0,0,0.1);
+    animation:aparecer 1s ease;
+}
+
+.rectangulo iframe{
+    width:100%;
+    height:250px;
+    border-radius:15px;
+    border:none;
+    margin-bottom:10px;
+}
+
+.rectangulo img{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:10px;
+}
+
+.opcionTexto{
+    font-size:18px;
+    margin-top:5px;
+}
+
+.rectangulo{
+    background:#e6f2ff;
+    border-radius:20px;
+    padding:20px;
+    margin:20px 0;
+    width:95%;
+    box-shadow:0px 8px 18px rgba(0,0,0,0.08);
+    animation:aparecer 1s ease;
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.rectangulo img{
+    width:150px;
+    border-radius:15px;
+}
+
+.texto-recuerdo{
+    text-align:left;
+    font-size:16px;
+}
+
+
+.opcion-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.texto-opcion{
+    margin-top:8px;
+    font-size:15px;
+    color:#444;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div id="contenedor">
+
+<div id="inicio">
+
+<img src="img\kitty-kitty-heart.gif" class="gifinicio">
+
+<h1 id="pregunta">Paola ¿Puedor ser tu San Valentín por siempre? 💖 </h1>
+
+<button id="si">Sí 💖</button>
+<button id="no">No 💔</button>
+
+</div>
+
+<div id="menu">
+
+<h2>Gracias por decir que sí. Te amo mucho. Ahora elige una de las opciones que hice para ti 😸💖</h2>
+
+<div class="grid">
+
+<div class="opcion-box">
+<img src="img\Cat Love GIF by NGcorpvtc.gif" class="opcion" onclick="mostrar('frases')">
+<div class="texto-opcion">Frasesitas para ti</div>
+</div>
+
+<div class="opcion-box">
+<img src="img\Cats Couple Hug GIF.gif" class="opcion" onclick="mostrar('pensamientos')">
+<div class="texto-opcion"> Cosas que me recuerdan a ti</div>
+</div>
+
+<div class="opcion-box">
+<img src="img\Cat Love GIF by NGcorpvtc (1).gif" class="opcion" onclick="mostrar('carta')">
+<div class="texto-opcion">Una carta para ti Paola</div>
+</div>
+
+<div class="opcion-box">
+<img src="img\Kiss You Love GIF.gif" class="opcion" onclick="mostrar('canciones')">
+<div class="texto-opcion"> Música que me recuerda a ti</div>
+</div>
+
+</div>
+
+
+</div>
+
+<div id="frases" class="seccion">
+<h2> Algunas frases para ti. Espero que te gusten, Muak 😸💖</h2>
+
+<div class="cartas">
+<div class="carta c1" contenteditable="true"> Un dia le conte a las estrellas sobre ti y se pusieron celosas al saber que para mi tu brillas mucho mas que ellas</div>
+<div class="carta c2" contenteditable="true"> Sole me permito una sonrisa al mes pero tu has sacado tantas que ya ni recuedo cuantas van. </div>
+<div class="carta c3" contenteditable="true"> Si fueramos gatos serias el amor de mi vida en mis 7 vidas </div>
+<div class="carta c4" contenteditable="true"> Te amo mucho mucho mucho mucho mucho mucho  mucho mucho mucho mucho mucho mucho  mucho mucho mucho mucho mucho mucho y mucho. </div>
+<div class="carta c5" contenteditable="true"> Construyamos el amor mas puro y mutuo que exista y que existira por siempre. </div>
+<div class="carta c6" contenteditable="true"> Te amare hoy, mañana y hasta el dia de mi muerte. Y si es posible te amare cuando mi tiempo aqui haya expirado, te amare en todos los universps incluso cuando este ya no sea suficiente. </div>
+<div class="carta c7" contenteditable="true"> Siempre seras la luna de mi sol. </div>
+<div class="carta c8" contenteditable="true"> Si me dijieran que por amarte todo el mundo me odiaría estaría dispuesto a que mil galaxias me odiaran </div>
+<div class="carta c9" contenteditable="true"> I love you with all my heart, with all my being, with my entire existence, and with everything that follows. </div>
+<div class="carta c10" contenteditable="true"> Tu amas los pandas, leer, pintar, dibujar y escuchar musica y yo te amo a ti.  </div>
+<div class="carta c11" contenteditable="true"> Cuando necesites a alguien yo siempre estare ahi, tanto para hablar de todo lo que necesites o cuando solo necesites a alguien a lado tuyo en silencio. </div>
+<div class="carta c12" contenteditable="true"> Ya te dije que amo tu sonrisa, tu cabello, tus ojos, tu cara, tu personalidad, tu forma de ser, amo todo de ti . </div>
+<div class="carta c13" contenteditable="true"> Imaginate lo afortunado que soy al poder decir que tengo a la mejor novia y maestra del kinder del mundo. </div>
+<div class="carta c14" contenteditable="true"> take my hand take my whole life too for i can't help falling in love with you </div>
+<div class="carta c15" contenteditable="true"> Paola de verdad te amo mucho, ni siquiera con todo esto puedo expresar todo lo que te amo, pero espero que al menos te guste y de verdad nunca lo olvides te amare por toda la eternidad </div>
+</div>    
+</div>
+
+<div id="pensamientos" class="seccion">
+<h2> Cosas que me recuerdan a ti</h2>
+
+<div class="rectangulo">
+<img src="img\The supermoon-2025_10.jpg">
+<div class="texto-recuerdo">
+<p> Como no iniciar con la primera cosa que siempre me recordaba a ti y es la luna, y es que tu eres como la luna, de hecho mas por que eres mas hermosa que ella. Es lo mejor por que siempre a donde voy y la veo siento que estoy contigo</p>
+</div>
+</div>
+
+<div class="rectangulo">
+<img src="img\_ My Tree _.jpg">
+<div class="texto-recuerdo">
+<p> Desde cuando me dijiste que eran tu animal favorito, no pude dejar de pensar en ti cuando veia videso de ellos o fotos, y es que como te lo dije alguna vez, tu eres igual de unica y especial y linda que ellos.</p>
+</div>
+</div>
+
+<div class="rectangulo">
+<img src="img\ABBEYSHEA Banks Fabric in Blue, Size 54_0 W in _ Wayfair.jpg">
+<div class="texto-recuerdo">
+<p> En un mundo donde a todos los veia color morado, apareciste tu con el color azul, no exactamente al azul de la imagen sino al azul en general, te he dicho que ¿el azul tambien es mi favorito?. Bueno igual siempre el azul me recuerda a ti, el unico color especial para mi.</p>
+</div>
+</div>
+
+<div class="rectangulo">
+<img src="img\descarga (6).jpg">
+<div class="texto-recuerdo">
+<p> Quizas este te saque de onda y aun nose por que pero me recuedas mucho al mar, pero creo que es la tranquilidad del mar, el azul y la luna que se juntan, ademas de que siempre me imagine contigo en el mar</p>
+</div>
+</div>
+
+<div class="rectangulo">
+<img src="img\descarga (3).jpg">
+<div class="texto-recuerdo">
+<p> La flor de loto tiene el significado mas bonito que he escuchado, y que sea tu favorita tiene sentido, llegara el dia en que pueda encontrar una y regalartela lo prometo. Y si la flor de loto al igual que tu es una cosa unica y hermosa. Tambien te dedico el significado de la flor de loto reflejado.</p>
+</div>
+</div>
+
+<div class="rectangulo">
+<img src="img\February 11th.jpg">
+<div class="texto-recuerdo">
+<p>Obviamente como amo a mi lectora favortia, ahora cada libro, cada indice, cada frase, cada portada me recuerda a ti. Recuedo al principio que intente llegar a tus libros para poder habalr contigo sobre ello, y no me arrepiento pero no puedo seguir leyendo el de "Eres el amor de mi otra vida" por que wattpad no ayuda</p>
+</div>
+</div>
+
+<div class="rectangulo">
+<img src="img\☕🎨🌿.jpg">
+<div class="texto-recuerdo">
+<p> Como amo tu creatividad Paola, de verdad eres una chica super creativa y me encanta como lo interpretas, amo tus pinturas y tus dibujos, tiens un gran talento y yo siempre estare para recordartelo. Te amo mi pintora y dibujante favotrita. </p>
+</div>
+</div>
+
+<div class="rectangulo">
+<img src="img\descarga (4).jpg">
+<div class="texto-recuerdo">
+<p> ¿Ya te dije lo muchooo que amo el muñeco de nieve que me diste? Antes me gustaba por la navidad pero ahora lo super amo gracias a ti, muchisimas gracias por regalo tan bonito.</p>
+</div>
+</div>
+
+<div class="rectangulo">
+<img src="img\descarga (5).jpg">
+<div class="texto-recuerdo">
+<p> En general va enfocado a los atradecres, sobre todo los de la laguna ya que me recuerda a como siempre estabamos hablando sobre todo, la uni, problemas, recuerdos y todo bajo ese lindo atardecer. Sin duda eso es algo que jamas tendra precio.</p>
+</div>
+</div>
+
+<div class="rectangulo">
+<img src="img\descarga (7).jpg">
+<div class="texto-recuerdo">
+<p> Muy obvio y son todas las cosas que tengan que ver relacionadas con el amor, sabes veo dos gatos abrazandose y me recuerda a nosotros, veo la luna y el sol y tambien, veo frases y me recuerda a ti o cualquier video de tik tok de amor y tanto asi que tengo una carpeta de videos para ti </p>
+</div>
+</div>
+
+
+</div>
+
+<div id="carta" class="seccion">
+<h2> Espero te guste la carta</h2>
+
+<div class="carta-grande">
+<textarea>
+Para Paola de parte de Kevin:
+Hola Paola ¿Como estas? Espero que de lo mejor y que ya estes mejor de tu gripa, feliz primer san valentin juntos de todos los que nos quedan por nuestra existencia, me hubiera gustado muchismo poder estar juntos en esta fecha que es tan especial sabes ya tenia sorpresas pero te las tendre que dar despues. Bueno Paola sabes que te amo mucho y aun sigo recordando ese 6 de febrero sin duda el dia mas feliz de toda mi vida, cuando me dijiste que si recuedo que mi corazon parecia que iba a explotar de la emocion y amor y felicidad que tenia y que aun sigo teniendo, fue como un momento donde recapitule todo desde que nos conocimos y hasta ese momento.
+Hubo demasiadas cosas que te iba a contar en ese momento pero por la emocion y los nervios se me olvidaron, pero una importante es que aunque suene muy cursi jajjaa, te iba a decir que no solo te iba a regalar esas flores si no que apartir de ese momento tambien te regalaba mi corazon, mis pensamientos, sueños, mi amor, mi vida, mi futuro, mi ser, mi cuerpo y alma. Es lo mas importante que te regalo y sera para siempre.
+Perdon si sono muy cursi pero es toda la verdad. Sabes aun sigo recordando desde ese primer dia que te conoci y que despues de ese momento jamas pude dejar de verte y quererte y aunque pasaron los años nos y nos distanciamos nunca te olvide por que eres lo que mas amo en esta vida Paola, siempre estare a tu lado por el resto de nuestras vidas, incluso en lo que siga despues de esta vida.
+Sabes recuerdo que por octubre o noviembre yo hablaba mucho con la luna pensando que eras tu, o tambien le pedia y rogaba a dios por tenerte a mi lado y que me dieras una oportunidad.
+No quiero llenar la pagina de todo por que igual quiero contarte muchas mas cosas cuando salgamos y perdon si la carta sono muy cursi o por las faltas de autografia es que visual code no corrige jajaja.
+Bueno Paola te amo mucho con todo mi corazon, feliz primer san valentin juntos de todos los que pasaremos. Te amo muchoooooooooooo.
+</textarea>
+</div>   <!-- cierre carta-grande -->
+
+</div>   <!-- cierre seccion carta -->
+
+<div id="canciones" class="seccion">
+<h2>Estas son algunas de las canciones que mas me recuedan a ti</h2>
+
+<div class="rectangulo">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7b3k8I1fncAzbk9PHnLkbX" width="100%" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p>Creo que es el obvio por que no? jajaja. Bueno esta canción me empezo a recordar mucho a ti por noviembre, bueno si es por la luna pero no solo por eso si no que habia una parte en especial que era "Luna, no me abandones" y si, no quiero que jamas me abandones por que te amo mucho (Ademas por esas fechas te ma ausentaste por una semana y no queria que me abandonaras)</p>
+</div>
+
+<div class="rectangulo">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0Cy7wt6IlRfBPHXXjmZbcP" width="100%" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p> Ignorando la foto que tiene y que no sabia de que pelicula venia, esta me recordaba o me imaginaba mucho contigo sobre todo en la parte de "Love me like You Do" no se mucho ingles tampoco pero siempre lo interprete como amame como tu sabes o lo haces y si Paola amame como tu lo haces, ademas de que me salia en muchos videos de bodas y me imaginaba contigo </p>
+</div>
+
+<div class="rectangulo">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5I0aHj2JSQpoxSQnh3XcjO" width="100%" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p>De mis peliiiis fav pero mas importante esta cancion siempre me la imaginaba yo cantandotela o dedicandotela mejor por que mi voz no esta para cantar jajaja. Recuedo que compartia videos de manolo que siempre esperaria a Maria, bueno eran para ti pero creo que nunca los vistes. Igual yo te amo igual que Manolo a Maria, de hecho mucho mas</p>
+</div>
+
+<div class="rectangulo">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0ILCaNMr4s5CZdF1Km09Ln" width="100%" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p> Siii Paola tu eres My One And Only love, siempre me imaginaba esta cancion contigo agarrados de la mano.</p>
+</div>
+
+<div class="rectangulo">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0GB4zJkbXdXBbdJPgudwDx" width="100%" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p>Esta cancion sin duda alguna representaba lo que siempre sentia cuando te volvia a ver, como el desfile y es que literalmente mi corazon bailaba de alegria y amor cada que te miraba y aun sigue siendo asi, y es por que esto si es amor.</p>
+</div>
+
+<div class="rectangulo">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1dGr1c8CrMLDpV6mPbImSI" width="100%" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p> Me recuerdaaa mucho a la primera salida que tuvimos pero sobre todo a los regalos que me diste cuando salimos en enero, como amo ese mono de nieve, ese solecito que llevo a todos lados y a los separadores, recuerdo que con esta cancion la subi a todos los estados, y cuando salimos por primera vez creo que tambien la puse en mis notas o en la segunda. Pero una de mis favs que me recuerda a ti</p>
+</div>
+
+<div class="rectangulo">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0myRViRgmQ3J8izICXEAVO" width="100%" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p>La cancion de la nostalagia y la actualidad, esta me recordaba mucho a nosotros pero en cuando estabamos en el conalep pero ahorita, Ademas tambien de a nosotros dos estando en lugares bonitos y divirtiendonos.</p>
+</div>
+
+<div class="rectangulo">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7K6KRwyvE0plDEzxrVmCon" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p> Esta cancion me trae mucha nostalgia por que fue de las primeras que pensaba en ti. mas que nada en la melodia me gustaba mucho y por una escena que vi con esa cancion, luego te la muestro y entenderas el por que. </p>
+</div>
+
+<div class="rectangulo">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/44AyOl4qVkzS48vBsbNXaC" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p> Yo diria que de las mas importantes, por que tal cual un parrafo que dice la cancion es verdad y me encanta la frase, ademas con esta cancion era que yo tenia planeado el momento de declararme te iba a dar un anillo de promesa pero eso sigue pendiente ntp. Ademas de mucho singificado bonito de la cancion siempre me recordaba a ti</p>
+</div>
+
+<div class="rectangulo">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/35LdDKNMwvKftENaj1WIwF" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p>Antes no me gustaba esta cancion por que la quemaron por etapas del 2023 o 2024 creo pero en este año cuando me recordo a algo de ti, aqui tambien aplica de una escena de boda con la cancion pero muy bonita (luego igual te la muestro) me encanto la cancion pero creo que mas por que me recuerda a ti</p>
+</div>
+
+<div class="rectangulo">
+<p> Bueno esas son algunas de las muchas canciones que me recuerdan o pienso en ti, en general son muchas mas pero diria que estas son algunas y es que otras spotify no me dejo ponerlas o nose programar todavia bien ajjaja.
+    Te amo mucho.
+
+
+</div>
+
+
+</div>
+
+<script>
+
+var botonSi = document.getElementById("si");
+var botonNo = document.getElementById("no");
+var pregunta = document.getElementById("pregunta");
+
+var tamañoSi = 20;
+var tamañoNo = 20;
+var contador = 0;
+
+var textosNo = [
+" Bueno, es normal picar por error 😸",
+"Bueno quizas picaste por error de nuevo 😢",
+"Oye Paola, el boton de si es el bueno 👀",
+"Vamos My pretty little girl yo confio en ti ❤️",
+"Casi me la crei, es broma verdad?🤨",
+"Ya porfavor, plis Paolaaa 🥲",
+"Mira piensalo, yo te puedo preparar hotckes para siempre 😋",
+"Paolaaaa, Por favooooor 😭",
+"No me rendire hasta que digas que si 😽",
+"Aunque sigas diciendo que no, Yo te amo mucho Paola ",
+"Pero igual elige que si, por favooooor 😿",
+"Okey Paola, aqui estaremos hasta cuando digas que si, te amo mucho Muak 😽"
+];
+
+botonNo.onclick = function(){
+
+    tamañoSi = tamañoSi + 10;
+    tamañoNo = tamañoNo - 2;
+
+    botonNo.style.fontSize = tamañoNo + "px";
+    botonSi.style.fontSize = tamañoSi + "px";
+
+    if(tamañoSi < 5){
+        tamañoSi = 5;
+    }
+
+    if(contador < textosNo.length){
+        pregunta.innerText = textosNo[contador];
+        contador++;
+    }
+
+};
+
+botonSi.onclick = function(){
+    document.getElementById("inicio").style.display="none";
+    document.getElementById("menu").style.display="block";
+};
+
+function mostrar(id){
+
+    var secciones = document.getElementsByClassName("seccion");
+
+    for(var i=0;i<secciones.length;i++){
+        secciones[i].style.display="none";
+    }
+
+    document.getElementById(id).style.display="block";
+}
+
+
+</script>
+
+</body>
+</html>
